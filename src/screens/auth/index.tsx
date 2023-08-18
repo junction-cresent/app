@@ -12,7 +12,7 @@ import { authAtom } from "@app/utils/atoms";
 import { log } from "@app/utils/logging";
 
 const Auth = () => {
-  const { viewStyles } = React.useContext(ThemeContext);
+  const { viewStyles, textStyles } = React.useContext(ThemeContext);
 
   const { loaded } = React.useContext(SplashContext);
   const { publicAxios } = React.useContext(AxiosContext);
@@ -44,7 +44,19 @@ const Auth = () => {
   }, []);
 
   log("REND", "Root Stack > Auth Stack");
-  return <View style={viewStyles.container} />;
+  return (
+    <View style={viewStyles.container}>
+      <View style={viewStyles.authLogoContainer}>
+        <SvgIcon name="Logo160" />
+      </View>
+      <View style={viewStyles.authContainer}>
+        <TouchableOpacity style={viewStyles.authButton} onPress={login}>
+          <SvgIcon name="GoogleLogin" />
+          <Text style={textStyles.authButton}>Login with Google Account</Text>
+        </TouchableOpacity>
+      </View>
+    </View>
+  );
 };
 
 export default Auth;

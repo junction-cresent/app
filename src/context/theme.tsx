@@ -27,8 +27,8 @@ const ThemeContext = React.createContext<{
     grayscale900: string;
   };
   viewStyles: ViewStyles;
-  textStyles: StyleSheet.NamedStyles<TextStyle>;
-  imageStyles: StyleSheet.NamedStyles<ImageStyle>;
+  textStyles: TextStyles;
+  imageStyles: ImageStyles;
   getHexOpacity: GetHexOpacity;
 }>(null);
 
@@ -55,9 +55,40 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     container: {
       flex: 1,
     },
+    authContainer: {
+      flex: 1,
+      justifyContent: "flex-end",
+      paddingVertical: insets.bottom + 6,
+      paddingHorizontal: 12,
+    },
+    authLogoContainer: {
+      position: "absolute",
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      justifyContent: "center",
+      alignItems: "center",
+    },
+    authButton: {
+      backgroundColor: colors.grayscale100,
+      flexDirection: "row",
+      alignItems: "center",
+      justifyContent: "center",
+      gap: 16,
+      paddingVertical: 20,
+      paddingHorizontal: 16,
+      borderRadius: 100,
+    },
   });
 
-  const textStyles = StyleSheet.create<TextStyles>({});
+  const textStyles = StyleSheet.create<TextStyles>({
+    authButton: {
+      fontSize: 16,
+      fontFamily: "Manrope-Bold",
+      color: colors.grayscale900,
+    },
+  });
 
   const imageStyles = StyleSheet.create<ImageStyles>({});
 
