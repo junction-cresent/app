@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "sourceMap": true,
+    "jsx": "react",
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "module": "commonjs",
+    "checkJs": false,
+    // "strict": true,
+    "baseUrl": "./",
+    "paths": {
+      "@root/*": ["*"],
+      "@app/*": ["src/*"]
+    },
+    "resolveJsonModule": true
+  },
+  "include": [
+    "./**/*"
+  ],
+}
