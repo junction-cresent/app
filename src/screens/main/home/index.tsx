@@ -33,7 +33,7 @@ const Home = () => {
             </TouchableOpacity>
           </View>
           <View style={styles.home.section}>
-            <Text style={styles.home.sectionTitle}>Achievements</Text>
+            <Text style={styles.home.sectionTitle}>Recent Activity</Text>
             <View style={styles.home.dashedBox}>
               <View style={styles.home.archivementRow}>
                 {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].map(
@@ -58,6 +58,19 @@ const Home = () => {
                 </TouchableOpacity>
               </View>
             </View>
+          </View>
+          <View style={styles.home.grid}>
+            <View style={styles.home.gridRow}>
+              <TouchableOpacity
+                style={[styles.home.gridItem, styles.home.gridItemOrange]}
+              />
+              <TouchableOpacity
+                style={[styles.home.gridItem, styles.home.gridItemYellow]}
+              />
+            </View>
+            <TouchableOpacity
+              style={[styles.home.gridItem, styles.home.gridItemPurple]}
+            />
           </View>
         </View>
       </ScrollView>

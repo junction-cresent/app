@@ -1,0 +1,38 @@
+{
+  "64e0abe53207e544b901bbd1": {
+    "name": "Nazuna",
+    "lastTime": "23m",
+    "unread": 0,
+    "profile": "",
+    "chats": [
+      {
+        "me": false,
+        "type": "message",
+        "data": "Hi there!"
+      },
+      {
+        "me": true,
+        "type": "message",
+        "data": "Hello Nazuna!"
+      },
+      {
+        "me": true,
+        "type": "message",
+        "data": "Hi there! hi"
+      }
+    ]
+  },
+  "64e0af103207e544b901bbd2": {
+    "name": "Chizuru",
+    "lastTime": "49m",
+    "unread": 1,
+    "profile": "",
+    "chats": [
+      {
+        "me": false,
+        "type": "message",
+        "data": "I also like korean foods too!"
+      }
+    ]
+  }
+}

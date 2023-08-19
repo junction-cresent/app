@@ -6,6 +6,7 @@ import { ScrollView, View, TouchableOpacity, TextInput } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
 import { ThemeContext } from "@app/context/theme";
+import ChatData from "@app/resources/data/chat.json";
 import { SvgIcon, Text } from "@root/src/components";
 
 const Chat = () => {
@@ -30,12 +31,16 @@ const Chat = () => {
             </TouchableOpacity>
           </View>
           <View style={styles.chat.list}>
-            <Item name="Nazuna" preview="made a food appointment" count={0} />
-            <Item
-              name="Chizuru"
-              preview="I also like korean foods too!"
-              count={1}
-            />
+            {Object.entries(ChatData).map(([key, value]) => (
+              <Item
+                key={key}
+                id={key}
+                name={value.name}
+                preview={value.chats[0].data}
+                unread={value.unread}
+                lastTime={value.lastTime}
+              />
+            ))}
           </View>
         </View>
       </ScrollView>
@@ -44,11 +49,13 @@ const Chat = () => {
 };
 
 interface ItemProps {
+  id: string;
   name: string;
   preview: string;
-  count: number;
+  unread: number;
+  lastTime: string;
 }
-const Item: React.FC<ItemProps> = ({ name, preview, count }) => {
+const Item: React.FC<ItemProps> = ({ id, name, preview, unread, lastTime }) => {
   const { styles } = React.useContext(ThemeContext);
   const navigation = useNavigation<MainStackNavigationProps>();
 
@@ -58,6 +65,9 @@ const Item: React.FC<ItemProps> = ({ name, preview, count }) => {
       onPress={() => {
         navigation.navigate("ChatStack", {
           screen: "Chat",
+          params: {
+            data: ChatData[id],
+          },
         });
       }}>
       <View style={styles.chat.profile} />
@@ -65,16 +75,18 @@ const Item: React.FC<ItemProps> = ({ name, preview, count }) => {
         <Text style={styles.chat.name}>{name}</Text>
         <View style={styles.chat.preview}>
           <Text
-            style={count > 0 ? styles.chat.unread : styles.chat.previewText}>
+            style={
+              unread > 0 ? styles.chat.unreadChat : styles.chat.previewText
+            }>
             {preview}
           </Text>
           <View style={styles.chat.dot} />
-          <Text style={styles.chat.previewText}>2h</Text>
+          <Text style={styles.chat.previewText}>{lastTime}</Text>
         </View>
       </View>
-      {count > 0 && (
-        <View style={styles.chat.count}>
-          <Text style={styles.chat.countText}>{count}</Text>
+      {unread > 0 && (
+        <View style={styles.chat.unread}>
+          <Text style={styles.chat.unreadText}>{unread}</Text>
         </View>
       )}
     </TouchableOpacity>

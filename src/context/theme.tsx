@@ -171,7 +171,7 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
   const indexStyles = StyleSheet.create({
     container: {
       paddingTop: insets.top + 12,
-      paddingBottom: insets.bottom + 82,
+      paddingBottom: insets.bottom + 64 + 6 + 12,
       paddingHorizontal: 12,
       gap: 40,
     },
@@ -196,13 +196,6 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
   });
 
   const homeStyles = StyleSheet.create({
-    container: {
-      paddingTop: insets.top + 12,
-      paddingBottom: insets.bottom + 82,
-      paddingHorizontal: 12,
-      gap: 40,
-    },
-
     top: {
       flexDirection: "row",
       alignItems: "center",
@@ -241,7 +234,7 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     },
     sectionTitle: {
       fontSize: 20,
-      color: colors.grayscale100,
+      color: colors.grayscale600,
       paddingLeft: 4,
     },
     dashedBox: {
@@ -287,6 +280,28 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     seedChargeText: {
       fontSize: 12,
       color: colors.grayscale900,
+    },
+    grid: {
+      gap: 12,
+    },
+    gridRow: {
+      flexDirection: "row",
+      gap: 12,
+    },
+    gridItem: {
+      height: 106,
+      flex: 1,
+      backgroundColor: colors.grayscale800,
+      borderRadius: 16,
+    },
+    gridItemOrange: {
+      backgroundColor: colors.orange,
+    },
+    gridItemYellow: {
+      backgroundColor: colors.yellow,
+    },
+    gridItemPurple: {
+      backgroundColor: colors.purple,
     },
   });
 
@@ -354,7 +369,7 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
       fontSize: 14,
       color: colors.grayscale500,
     },
-    unread: {
+    unreadChat: {
       fontSize: 14,
       color: colors.grayscale100,
     },
@@ -364,7 +379,7 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
       borderRadius: 100,
       backgroundColor: colors.grayscale500,
     },
-    count: {
+    unread: {
       width: 28,
       height: 28,
       borderRadius: 100,
@@ -372,7 +387,7 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
       alignItems: "center",
       justifyContent: "center",
     },
-    countText: {
+    unreadText: {
       fontSize: 14,
       color: colors.grayscale900,
     },
@@ -392,6 +407,7 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
       alignItems: "center",
       gap: 16,
       marginTop: 8,
+      marginBottom: 16,
       paddingHorizontal: 16,
     },
     profile: {
@@ -402,6 +418,36 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     },
     name: {
       fontSize: 24,
+      color: colors.grayscale100,
+    },
+
+    bubbles: {
+      paddingHorizontal: 12,
+      paddingVertical: 16,
+    },
+    bubble: {
+      alignSelf: "flex-start",
+      maxWidth: width - 64,
+      paddingVertical: 20,
+      paddingHorizontal: 24,
+      borderWidth: 2,
+      borderColor: colors.grayscale700,
+      borderRadius: 100,
+    },
+    bubbleText: {
+      fontSize: 14,
+      color: colors.grayscale100,
+    },
+    bubbleMe: {
+      alignSelf: "flex-end",
+      maxWidth: width - 64,
+      paddingVertical: 20,
+      paddingHorizontal: 24,
+      backgroundColor: colors.grayscale700,
+      borderRadius: 100,
+    },
+    bubbleMeText: {
+      fontSize: 14,
       color: colors.grayscale100,
     },
 
