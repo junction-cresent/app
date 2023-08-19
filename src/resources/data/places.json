@@ -1,0 +1,34 @@
+{
+  "64e107383207e544b901bbfd": {
+    "name": "수변최고돼지국밥",
+    "address": "26 Centum 3-ro, Haeundae, Busan",
+    "tags": ["Korea Food", "Pork and Rice Soup"],
+    "images": ["수변최고돼지국밥1", "수변최고돼지국밥2", "수변최고돼지국밥3"],
+    "distance": "100m",
+    "likes": 2375
+  },
+  "64e107383207e544b901bbfe": {
+    "name": "동대문엽기떡볶이",
+    "address": "9 Centum dong-ro, U-dong, Haeundae-gu, Busan",
+    "tags": ["Korea Food", "Tteokbokki", "Spicy"],
+    "images": ["동대문엽기떡볶이1", "동대문엽기떡볶이2", "동대문엽기떡볶이3"],
+    "distance": "180m",
+    "likes": 5322
+  },
+  "64e107383207e544b901bbff": {
+    "name": "팔선생",
+    "address": "55, Centum 5-ro, Haeundae-gu, Busan",
+    "tags": ["Chinese Food", "Delicious Sauce"],
+    "images": ["팔선생1", "팔선생2", "팔선생3"],
+    "distance": "1.2km",
+    "likes": 1242
+  },
+  "64e107383207e544b901bc00": {
+    "name": "피자스쿨",
+    "address": "1 Marine city 3-ro, Haeundae, Busan",
+    "tags": ["Fast Food", "Pizza"],
+    "images": ["피자스쿨1", "피자스쿨2", "피자스쿨3"],
+    "distance": "1.8km",
+    "likes": 1523
+  }
+}

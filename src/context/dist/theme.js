@@ -330,7 +330,7 @@ var ThemeProvider = function (_a) {
             color: colors.grayscale900
         }
     });
-    var chatPageStyles = react_native_1.StyleSheet.create({
+    var chattingStyles = react_native_1.StyleSheet.create({
         keyboard: {
             paddingBottom: insets.bottom
         },
@@ -399,7 +399,7 @@ var ThemeProvider = function (_a) {
                 page: pageStyles,
                 home: homeStyles,
                 chat: chatStyles,
-                chatPage: chatPageStyles
+                chatting: chattingStyles
             },
             getHexOpacity: getHexOpacity
         } }, children));

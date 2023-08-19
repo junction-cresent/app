@@ -1,0 +1,32 @@
+{
+  "64e0efb43207e544b901bbd7": {
+    "name": "Show me your favorite chicken restaurant.",
+    "image": "chicken",
+    "by": "64e0f1303207e544b901bbdb",
+    "users": 2320,
+    "likes": 4330,
+    "title": "Chicken is everyone’s soul food.",
+    "description": "We love chicken. We all have memories on chicken. I want you to share that memory with us.",
+    "requirement": ["•  Locate your favorite chicken restaurant", "•  Describe why you chose that place", "•  Photos are optional"]
+  },
+  "64e0eff33207e544b901bbd8": {
+    "name": "Instagrammable Cafe Contest!!",
+    "image": "insta",
+    "by": "64e0f1303207e544b901bbdc",
+    "users": 1225,
+    "likes": 3673,
+    "title": "Title here",
+    "description": "Description here",
+    "requirement": ["•  requirement"]
+  },
+  "64e0eff73207e544b901bbd9": {
+    "name": "Your most nostalgia restaurant",
+    "image": "nostalgia",
+    "by": "64e0f1483207e544b901bbdd",
+    "users": 860,
+    "likes": 2360,
+    "title": "Title here",
+    "description": "Description here",
+    "requirement": ["•  requirement"]
+  }
+}

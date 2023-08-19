@@ -4,6 +4,7 @@ import { StyleSheet, TextStyle, Text } from "react-native";
 interface CustomTextProps {
   children: React.ReactNode;
   style?: TextStyle;
+  numberOfLines?: number;
 }
 const CustomText: React.FC<CustomTextProps> = ({
   children,

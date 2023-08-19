@@ -8,12 +8,15 @@ import {
   KeyboardAvoidingView,
   TouchableOpacity,
   TextInput,
+  Image,
 } from "react-native";
 
 import { useNavigation, useRoute, RouteProp } from "@react-navigation/native";
 
+import { SvgIcon, Text } from "@app/components";
 import { ThemeContext } from "@app/context/theme";
-import { SvgIcon, Text } from "@root/src/components";
+import UsersData from "@app/resources/data/users.json";
+import profile from "@app/resources/images/profile";
 
 const Chat = () => {
   const { colors, styles } = React.useContext(ThemeContext);
@@ -26,9 +29,9 @@ const Chat = () => {
 
   return (
     <View style={styles.global.container}>
-      <View style={styles.chatPage.container}>
+      <View style={styles.chatting.container}>
         <KeyboardAvoidingView
-          style={styles.chatPage.keyboard}
+          style={styles.chatting.keyboard}
           behavior="padding">
           <View style={styles.page.header}>
             <TouchableOpacity
@@ -38,27 +41,29 @@ const Chat = () => {
               <SvgIcon name="BackArrowSvg" fill={colors.grayscale300} />
             </TouchableOpacity>
           </View>
-          <View style={styles.chatPage.user}>
-            <View style={styles.chatPage.profile} />
-            <Text style={styles.chatPage.name}>{route.params.data.name}</Text>
+          <View style={styles.chatting.user}>
+            <Image
+              style={styles.chatting.profile}
+              source={profile[UsersData[route.params.data.user].profile]}
+              resizeMode="cover"
+            />
+            <Text style={styles.chatting.name}>
+              {UsersData[route.params.data.user].name}
+            </Text>
           </View>
-          <ScrollView style={styles.chatPage.scroll}>
-            <View style={styles.chatPage.bubbles}>
+          <ScrollView style={styles.chatting.scroll}>
+            <View style={styles.chatting.bubbles}>
               {route.params.data.chats.map((chat, index) => (
                 <View
                   key={index}
-                  style={[
-                    chat.me ? styles.chatPage.bubbleMe : styles.chatPage.bubble,
-                    index > 0 &&
-                      route.params.data.chats[index - 1].me === chat.me && {
-                        marginTop: 12,
-                      },
-                  ]}>
+                  style={
+                    chat.me ? styles.chatting.bubbleMe : styles.chatting.bubble
+                  }>
                   <Text
                     style={
                       chat.me
-                        ? styles.chatPage.bubbleMeText
-                        : styles.chatPage.bubbleText
+                        ? styles.chatting.bubbleMeText
+                        : styles.chatting.bubbleText
                     }>
                     {chat.data}
                   </Text>
@@ -68,16 +73,16 @@ const Chat = () => {
           </ScrollView>
           <View
             style={[
-              styles.chatPage.chat,
-              isFocus && styles.chatPage.chatKeyboard,
+              styles.chatting.chat,
+              isFocus && styles.chatting.chatKeyboard,
             ]}>
             <TouchableOpacity
-              style={[styles.chatPage.button, styles.chatPage.add]}>
-              <SvgIcon name="ChatAddSvg" fill={colors.grayscale900} />
+              style={[styles.chatting.button, styles.chatting.add]}>
+              <SvgIcon name="AddSvg" fill={colors.grayscale900} />
             </TouchableOpacity>
-            <View style={styles.chatPage.search}>
+            <View style={styles.chatting.search}>
               <TextInput
-                style={styles.chatPage.searchInput}
+                style={styles.chatting.searchInput}
                 placeholder="Enter Message"
                 placeholderTextColor={colors.grayscale500}
                 onFocus={() => setIsFocus(true)}
@@ -85,7 +90,7 @@ const Chat = () => {
               />
             </View>
             <TouchableOpacity
-              style={[styles.chatPage.button, styles.chatPage.send]}>
+              style={[styles.chatting.button, styles.chatting.send]}>
               <SvgIcon name="ChatSendSvg" fill={colors.grayscale100} />
             </TouchableOpacity>
           </View>

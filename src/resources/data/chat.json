@@ -1,9 +1,8 @@
 {
   "64e0abe53207e544b901bbd1": {
-    "name": "Nazuna",
-    "lastTime": "23m",
+    "user": "64e0f11a3207e544b901bbda",
+    "lastTime": "3m",
     "unread": 0,
-    "profile": "",
     "chats": [
       {
         "me": false,
@@ -22,16 +21,99 @@
       }
     ]
   },
-  "64e0af103207e544b901bbd2": {
-    "name": "Chizuru",
-    "lastTime": "49m",
+  "64e102333207e544b901bbef": {
+    "user": "64e0fd6f3207e544b901bbe7",
+    "lastTime": "24m",
     "unread": 1,
-    "profile": "",
     "chats": [
       {
         "me": false,
         "type": "message",
-        "data": "I also like korean foods too!"
+        "data": "Hello~"
+      },
+      {
+        "me": true,
+        "type": "message",
+        "data": "Hi. Nice to meet you."
+      },
+      {
+        "me": false,
+        "type": "message",
+        "data": "Do you like yupgi tteokbokki?"
+      },
+      {
+        "me": true,
+        "type": "message",
+        "data": "Yes. I love it."
+      },
+      {
+        "me": false,
+        "type": "message",
+        "data": "How many levels of spicy can you eat?"
+      }
+    ]
+  },
+  "64e102333207e544b901bbf0": {
+    "user": "64e0fd6f3207e544b901bbea",
+    "lastTime": "48m",
+    "unread": 0,
+    "chats": [
+      {
+        "me": false,
+        "type": "message",
+        "data": "hi^^"
+      },
+      {
+        "me": true,
+        "type": "message",
+        "data": "Hi~~"
+      },
+      {
+        "me": false,
+        "type": "message",
+        "data": "Do you know any good gopchang restaurants?"
+      },
+      {
+        "me": true,
+        "type": "message",
+        "data": "Of course. I know a great store around Seoul Station."
+      },
+      {
+        "me": true,
+        "type": "message",
+        "data": "Why don't you go with me?"
+      }
+    ]
+  },
+  "64e102333207e544b901bbf1": {
+    "user": "64e0fd6f3207e544b901bbeb",
+    "lastTime": "1h",
+    "unread": 0,
+    "chats": [
+      {
+        "me": true,
+        "type": "message",
+        "data": "Hello."
+      },
+      {
+        "me": false,
+        "type": "message",
+        "data": "Hi~"
+      },
+      {
+        "me": false,
+        "type": "message",
+        "data": "I came to Korea for a trip."
+      },
+      {
+        "me": false,
+        "type": "message",
+        "data": "Can you go to a delicious Korean restaurant with me?"
+      },
+      {
+        "me": true,
+        "type": "message",
+        "data": "Yes. I'm ready"
       }
     ]
   }

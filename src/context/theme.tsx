@@ -1,5 +1,11 @@
 import React from "react";
-import { StyleSheet, ViewStyle, TextStyle, ImageStyle } from "react-native";
+import {
+  StyleSheet,
+  StyleProp,
+  ViewStyle,
+  TextStyle,
+  ImageStyle,
+} from "react-native";
 import type { EdgeInsets } from "react-native-safe-area-context";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
@@ -8,22 +14,15 @@ import { useRecoilValue } from "recoil";
 import { dimensionsAtom } from "@app/utils/atoms";
 
 type GetHexOpacity = (hex: string, opacity: number) => string;
-type ViewStyles = {
-  [key: string]: ViewStyle;
-};
-type TextStyles = {
-  [key: string]: TextStyle;
-};
-type ImageStyles = {
-  [key: string]: ImageStyle;
-};
 const ThemeContext = React.createContext<{
   insets: EdgeInsets;
   colors: {
     [key: string]: string;
   };
   styles: {
-    [key: string]: ViewStyles | TextStyles | ImageStyles;
+    [key: string]: {
+      [key: string]: ViewStyle & TextStyle & StyleProp<ImageStyle>;
+    };
   };
   getHexOpacity: GetHexOpacity;
 }>(null);
@@ -173,6 +172,61 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
       paddingLeft: 4,
       paddingTop: 4,
     },
+    header: {
+      flexDirection: "row",
+      alignItems: "center",
+      paddingHorizontal: 4,
+      paddingRight: 0,
+      height: 54,
+      gap: 12,
+    },
+    headerContent: {
+      flex: 1,
+      gap: 2,
+    },
+    headerCurrent: {
+      fontSize: 14,
+      color: colors.grayscale500,
+    },
+    headerTitle: {
+      flexDirection: "row",
+      alignItems: "center",
+      gap: 12,
+    },
+    headerTitleText: {
+      fontSize: 24,
+      color: colors.grayscale100,
+    },
+    button: {
+      width: 54,
+      height: 54,
+      borderRadius: 100,
+      borderWidth: 2,
+      borderColor: colors.grayscale700,
+      alignItems: "center",
+      justifyContent: "center",
+    },
+    search: {
+      flexDirection: "row",
+      alignItems: "center",
+      flex: 1,
+      borderWidth: 2,
+      borderColor: colors.grayscale700,
+      borderStyle: "dashed",
+      borderRadius: 100,
+      paddingLeft: 24 - 2,
+      marginTop: -24,
+    },
+    searchInput: {
+      flex: 1,
+      paddingVertical: 20 - 2,
+      paddingLeft: 16,
+      paddingRight: 24 - 2,
+      includeFontPadding: false,
+      fontSize: 14,
+      fontFamily: "Manrope-SemiBold",
+      color: colors.grayscale100,
+    },
   });
 
   const pageStyles = StyleSheet.create({
@@ -192,42 +246,28 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
       alignItems: "center",
       justifyContent: "center",
     },
-  });
-
-  const homeStyles = StyleSheet.create({
-    top: {
-      flexDirection: "row",
-      alignItems: "center",
-      justifyContent: "space-between",
-      padding: 4,
-      paddingRight: 0,
-      marginBottom: -8,
-    },
-    topCurrent: {
-      gap: 2,
-    },
-    topCurrentTitle: {
-      fontSize: 14,
-      color: colors.grayscale500,
-    },
-    topCurrentLocation: {
+    headerButtons: {
       flexDirection: "row",
       alignItems: "center",
       gap: 12,
     },
-    topCurrentLocationText: {
-      fontSize: 24,
-      color: colors.grayscale100,
-    },
-    notification: {
-      width: 54 - 4,
-      height: 54 - 4,
-      borderRadius: 100,
-      borderWidth: 2,
-      borderColor: colors.grayscale700,
+    headerFloating: {
+      position: "absolute",
+      zIndex: 10,
+      top: insets.top + 10,
+      left: 6,
+      right: 6,
+      flexDirection: "row",
       alignItems: "center",
-      justifyContent: "center",
+      justifyContent: "space-between",
+      height: 66,
+      padding: 6,
+      paddingLeft: 10,
+      borderRadius: 100,
     },
+  });
+
+  const homeStyles = StyleSheet.create({
     section: {
       gap: 12,
     },
@@ -288,10 +328,37 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
       gap: 12,
     },
     gridItem: {
-      height: 106,
+      height: 108,
       flex: 1,
       backgroundColor: colors.grayscale800,
+      paddingHorizontal: 16,
+      justifyContent: "center",
       borderRadius: 16,
+      gap: 4,
+    },
+    gridOrangeTitle: {
+      fontSize: 28,
+      color: colors.orange100,
+    },
+    gridOrangeDescription: {
+      fontSize: 14,
+      color: colors.orange100,
+    },
+    gridYellowTitle: {
+      fontSize: 28,
+      color: colors.yellow600,
+    },
+    gridYellowDescription: {
+      fontSize: 14,
+      color: colors.yellow600,
+    },
+    gridPurpleTitle: {
+      fontSize: 28,
+      color: colors.purple100,
+    },
+    gridPurpleDescription: {
+      fontSize: 14,
+      color: colors.purple100,
     },
     gridItemOrange: {
       backgroundColor: colors.orange,
@@ -323,9 +390,9 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
       flexDirection: "row",
       alignItems: "center",
       gap: 12,
-      paddingVertical: 12,
-      paddingLeft: 16,
-      paddingRight: 20,
+      paddingVertical: 12 - 2,
+      paddingLeft: 16 - 2,
+      paddingRight: 20 - 2,
       borderWidth: 2,
       borderColor: colors.orange700,
       borderRadius: 100,
@@ -462,38 +529,251 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     },
   });
 
+  const challengesStyles = StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: colors.purple900,
+      paddingHorizontal: 12,
+    },
+    headerButton: {
+      borderColor: colors.purple700,
+    },
+    scroll: {
+      marginHorizontal: -12,
+      paddingHorizontal: 12,
+      paddingTop: 16,
+      gap: 40,
+    },
+    content: {
+      paddingTop: 40,
+      paddingBottom: insets.bottom + 12,
+      gap: 12,
+    },
+    button: {
+      flexDirection: "row",
+      alignItems: "center",
+      justifyContent: "center",
+      paddingVertical: 20 - 2,
+      paddingHorizontal: 24 - 2,
+      borderWidth: 2,
+      gap: 16,
+      borderColor: colors.purple700,
+      borderRadius: 100,
+    },
+    buttonText: {
+      fontSize: 14,
+      color: colors.purple100,
+    },
+    title: {
+      fontSize: 20,
+      color: colors.purple600,
+    },
+    list: {
+      gap: 16,
+    },
+    item: {
+      padding: 16 - 2,
+      gap: 16,
+      borderWidth: 2,
+      borderColor: colors.purple700,
+      borderStyle: "dashed",
+      borderRadius: 16,
+    },
+    thumbnail: {
+      width: "100%",
+      height: 120,
+      borderRadius: 16,
+      backgroundColor: colors.purple800,
+    },
+    info: {
+      gap: 4,
+    },
+    name: {
+      fontSize: 16,
+      color: colors.purple100,
+    },
+    by: {
+      flexDirection: "row",
+      alignItems: "center",
+      gap: 6,
+    },
+    byText: {
+      fontSize: 14,
+      color: colors.purple500,
+    },
+    byUser: {
+      fontSize: 14,
+      color: colors.purple300,
+    },
+    statistics: {
+      flexDirection: "row",
+      alignItems: "center",
+      gap: 16,
+    },
+    statistic: {
+      flexDirection: "row",
+      alignItems: "center",
+      gap: 6,
+    },
+    statisticText: {
+      fontSize: 14,
+      color: colors.purple300,
+    },
+  });
+
+  const detailStyles = StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: colors.purple900,
+    },
+    headerFloating: {
+      backgroundColor: colors.purple900,
+    },
+    top: {
+      padding: 16,
+      paddingTop: 14 + 66 + 10 + insets.top,
+    },
+    title: {
+      fontSize: 36,
+      color: colors.purple100,
+    },
+    background: {
+      position: "absolute",
+      zIndex: -1,
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      backgroundColor: colors.purple800,
+    },
+    image: {
+      width: "100%",
+      height: "100%",
+    },
+    gradient: {
+      position: "absolute",
+      zIndex: 1,
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+    },
+    content: {
+      padding: 16,
+      gap: 40,
+    },
+    statistics: {
+      flexDirection: "row",
+      alignItems: "center",
+      gap: 16,
+    },
+    statistic: {
+      flexDirection: "row",
+      alignItems: "center",
+      gap: 6,
+    },
+    statisticByText: {
+      fontSize: 14,
+      color: colors.purple500,
+    },
+    statisticText: {
+      fontSize: 14,
+      color: colors.purple300,
+    },
+    section: {
+      gap: 12,
+    },
+    sectionTitle: {
+      fontSize: 16,
+      color: colors.purple100,
+    },
+    sectionDescription: {
+      fontSize: 14,
+      color: colors.purple400,
+    },
+    button: {
+      backgroundColor: colors.purple100,
+      alignItems: "center",
+      paddingVertical: 20,
+      paddingHorizontal: 16,
+      borderRadius: 100,
+      marginHorizontal: 12,
+      marginBottom: insets.bottom + 6,
+    },
+    buttonText: {
+      fontSize: 14,
+      color: colors.purple900,
+    },
+  });
+
+  const nearStyles = StyleSheet.create({
+    list: {
+      gap: 12,
+    },
+    item: {
+      padding: 16 - 2,
+      gap: 16,
+      borderWidth: 2,
+      borderColor: colors.grayscale700,
+      borderRadius: 16,
+    },
+    info: {
+      gap: 4,
+    },
+    name: {
+      fontSize: 20,
+      color: colors.grayscale100,
+    },
+    address: {
+      fontSize: 12,
+      color: colors.grayscale400,
+    },
+    tags: {
+      flexDirection: "row",
+      alignItems: "center",
+      gap: 8,
+    },
+    tag: {
+      paddingVertical: 12,
+      paddingHorizontal: 20,
+      backgroundColor: colors.grayscale700,
+      borderRadius: 100,
+    },
+    tagText: {
+      fontSize: 12,
+      color: colors.grayscale100,
+    },
+    images: {
+      flexDirection: "row",
+      height: 120,
+      gap: 12,
+    },
+    image: {
+      flex: 1,
+      height: 120,
+      borderRadius: 8,
+      backgroundColor: colors.grayscale800,
+    },
+    statistics: {
+      flexDirection: "row",
+      alignItems: "center",
+      gap: 16,
+    },
+    statistic: {
+      flexDirection: "row",
+      alignItems: "center",
+      gap: 6,
+    },
+    statisticText: {
+      fontSize: 14,
+      color: colors.grayscale300,
+    },
+  });
+
   const chatStyles = StyleSheet.create({
     menu: {
       flexDirection: "row",
       gap: 12,
-    },
-    search: {
-      flexDirection: "row",
-      alignItems: "center",
-      flex: 1,
-      borderWidth: 2,
-      borderColor: colors.grayscale700,
-      borderStyle: "dashed",
-      borderRadius: 100,
-      paddingLeft: 24,
-    },
-    searchInput: {
-      flex: 1,
-      paddingVertical: 20,
-      paddingLeft: 16,
-      paddingRight: 24,
-      includeFontPadding: false,
-      fontSize: 14,
-      fontFamily: "Manrope-SemiBold",
-      color: colors.grayscale100,
-    },
-    add: {
-      width: 64,
-      height: 64,
-      borderRadius: 100,
-      backgroundColor: colors.grayscale100,
-      alignItems: "center",
-      justifyContent: "center",
     },
     list: {
       gap: 16,
@@ -507,7 +787,6 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
       width: 48,
       height: 48,
       borderRadius: 100,
-      backgroundColor: colors.grayscale800,
     },
     content: {
       flex: 1,
@@ -521,6 +800,7 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
       flexDirection: "row",
       alignItems: "center",
       gap: 6,
+      maxWidth: width - 200,
     },
     previewText: {
       fontSize: 14,
@@ -550,7 +830,7 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     },
   });
 
-  const chatPageStyles = StyleSheet.create({
+  const chattingStyles = StyleSheet.create({
     container: {
       flex: 1,
       paddingBottom: insets.bottom,
@@ -578,16 +858,19 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
       fontSize: 24,
       color: colors.grayscale100,
     },
-    bubbles: {
+    scroll: {
       marginHorizontal: -12,
       paddingHorizontal: 12,
+    },
+    bubbles: {
       paddingVertical: 16,
+      gap: 12,
     },
     bubble: {
       alignSelf: "flex-start",
       maxWidth: width - 64,
-      paddingVertical: 20,
-      paddingHorizontal: 24,
+      paddingVertical: 20 - 2,
+      paddingHorizontal: 24 - 2,
       borderWidth: 2,
       borderColor: colors.grayscale700,
       borderRadius: 100,
@@ -624,8 +907,8 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     },
     searchInput: {
       flex: 1,
-      paddingVertical: 20,
-      paddingHorizontal: 24,
+      paddingVertical: 20 - 2,
+      paddingHorizontal: 24 - 2,
       includeFontPadding: false,
       fontSize: 14,
       fontFamily: "Manrope-SemiBold",
@@ -664,8 +947,11 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
           page: pageStyles,
           home: homeStyles,
           matching: matchingStyles,
+          challenges: challengesStyles,
+          detail: detailStyles,
+          near: nearStyles,
           chat: chatStyles,
-          chatPage: chatPageStyles,
+          chatting: chattingStyles,
         },
         getHexOpacity,
       }}>

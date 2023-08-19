@@ -1,19 +1,31 @@
 import type { MainStackNavigationProps } from "@app/screens/main";
 
 import React from "react";
-import { View, TouchableOpacity } from "react-native";
+import { View, TouchableOpacity, Image } from "react-native";
 import Carousel from "react-native-snap-carousel";
 
 import { useNavigation } from "@react-navigation/native";
 
+import { SvgIcon, Text } from "@app/components";
 import { ThemeContext } from "@app/context/theme";
-import { SvgIcon, Text } from "@root/src/components";
+import MatchingData from "@app/resources/data/matching.json";
+import usersData from "@app/resources/data/users.json";
+import profile from "@app/resources/images/profile";
 
 const Matching = () => {
   const { colors, styles } = React.useContext(ThemeContext);
   const navigation = useNavigation<MainStackNavigationProps>();
 
   const [height, setHeight] = React.useState(0);
+
+  const data = Object.entries(MatchingData).map(([key, value]) => {
+    return {
+      id: key,
+      ...value,
+    };
+  });
+
+  console.log(data);
 
   return (
     <View style={styles.matching.container}>
@@ -47,8 +59,8 @@ const Matching = () => {
         {height > 0 && (
           <Carousel
             vertical
-            data={[1, 2, 3, 4, 5]}
-            renderItem={() => (
+            data={data}
+            renderItem={(data) => (
               <View
                 style={[
                   styles.matching.snapItem,
@@ -56,7 +68,11 @@ const Matching = () => {
                     height: height,
                   },
                 ]}>
-                <Card />
+                <Card
+                  id={data.item.id}
+                  introducing={data.item.introducing}
+                  user={usersData[data.item.user]}
+                />
                 <View style={styles.matching.snapInfo}>
                   <SvgIcon name="DownArrowSvg" fill={colors.orange500} />
                   <Text style={styles.matching.snapText}>
@@ -83,20 +99,27 @@ const Matching = () => {
   );
 };
 
-const Card = () => {
+interface CardProps {
+  id: string;
+  introducing: string;
+  user: (typeof usersData)[keyof typeof usersData];
+}
+const Card: React.FC<CardProps> = ({ id, introducing, user }) => {
   const { styles } = React.useContext(ThemeContext);
 
   return (
     <View style={styles.matching.card}>
       <View style={styles.matching.info}>
         <View style={styles.matching.user}>
-          <View style={styles.matching.profile} />
-          <Text style={styles.matching.name}>Nazuna</Text>
+          <Image
+            style={styles.matching.profile}
+            source={profile[user.profile]}
+            resizeMode="cover"
+          />
+          <Text style={styles.matching.name}>{user.name}</Text>
           <View style={styles.matching.line} />
         </View>
-        <Text style={styles.matching.introducing}>
-          “I like korean foods. Let’s eat together!”
-        </Text>
+        <Text style={styles.matching.introducing}>“{introducing}”</Text>
         <View style={styles.matching.tags}>
           <View style={styles.matching.tag}>
             <Text style={styles.matching.tagText}>Spicy Lover</Text>

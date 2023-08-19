@@ -7,7 +7,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import ChatData from "@app/resources/data/chat.json";
 import { log } from "@app/utils/logging";
 
-import Chat from "./screens/chat";
+import Chat from "./screens/chatting";
 
 type ChatDataKeys = keyof typeof ChatData;
 export type ChatStackParamList = {

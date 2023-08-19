@@ -5,9 +5,9 @@ import { ScrollView, View, TouchableOpacity } from "react-native";
 
 import { useNavigation } from "@react-navigation/native";
 
+import { SvgIcon, Text } from "@app/components";
 import { SplashContext } from "@app/context/splash";
 import { ThemeContext } from "@app/context/theme";
-import { SvgIcon, Text } from "@root/src/components";
 
 const Home = () => {
   const { colors, styles } = React.useContext(ThemeContext);
@@ -23,17 +23,15 @@ const Home = () => {
     <View style={styles.global.container}>
       <ScrollView>
         <View style={styles.index.container}>
-          <View style={styles.home.top}>
-            <View style={styles.home.topCurrent}>
-              <Text style={styles.home.topCurrentTitle}>Current location</Text>
-              <TouchableOpacity style={styles.home.topCurrentLocation}>
-                <Text style={styles.home.topCurrentLocationText}>
-                  Busan, Bexco
-                </Text>
+          <View style={styles.index.header}>
+            <View style={styles.index.headerContent}>
+              <Text style={styles.index.headerCurrent}>Current location</Text>
+              <TouchableOpacity style={styles.index.headerTitle}>
+                <Text style={styles.index.headerTitleText}>Busan, Bexco</Text>
                 <SvgIcon name="CurrentLocationSvg" fill={colors.grayscale200} />
               </TouchableOpacity>
             </View>
-            <TouchableOpacity style={styles.home.notification}>
+            <TouchableOpacity style={styles.index.button}>
               <SvgIcon name="NotificationSvg" fill={colors.grayscale200} />
             </TouchableOpacity>
           </View>
@@ -72,15 +70,32 @@ const Home = () => {
                   navigation.navigate("HomeStack", {
                     screen: "Matching",
                   });
-                }}
-              />
+                }}>
+                <Text style={styles.home.gridOrangeTitle}>Matching</Text>
+                <Text style={styles.home.gridOrangeDescription}>
+                  Match your perfect{"\n"}foodmate
+                </Text>
+              </TouchableOpacity>
               <TouchableOpacity
-                style={[styles.home.gridItem, styles.home.gridItemYellow]}
-              />
+                style={[styles.home.gridItem, styles.home.gridItemYellow]}>
+                <Text style={styles.home.gridYellowTitle}>Grouping</Text>
+                <Text style={styles.home.gridYellowDescription}>
+                  Group together{"\n"}by your favorite food
+                </Text>
+              </TouchableOpacity>
             </View>
             <TouchableOpacity
               style={[styles.home.gridItem, styles.home.gridItemPurple]}
-            />
+              onPress={() => {
+                navigation.navigate("HomeStack", {
+                  screen: "Challenges",
+                });
+              }}>
+              <Text style={styles.home.gridPurpleTitle}>Challenges</Text>
+              <Text style={styles.home.gridPurpleDescription}>
+                Submit your challenge and get the rewards!
+              </Text>
+            </TouchableOpacity>
           </View>
         </View>
       </ScrollView>
