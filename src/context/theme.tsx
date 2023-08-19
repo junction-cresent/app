@@ -163,9 +163,37 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     },
   });
 
+  const indexStyles = StyleSheet.create({
+    container: {
+      paddingTop: insets.top + 12,
+      paddingBottom: insets.bottom + 82,
+      paddingHorizontal: 12,
+      gap: 40,
+    },
+    title: {
+      fontSize: 24,
+      color: colors.grayscale100,
+      paddingLeft: 4,
+      paddingTop: 4,
+    },
+  });
+
+  const pageStyles = StyleSheet.create({
+    header: {
+      marginTop: insets.top + 12,
+      flexDirection: "row",
+      alignItems: "center",
+      justifyContent: "space-between",
+      height: 62,
+      paddingHorizontal: 12,
+      paddingLeft: 16,
+    },
+  });
+
   const homeStyles = StyleSheet.create({
     container: {
       paddingTop: insets.top + 12,
+      paddingBottom: insets.bottom + 82,
       paddingHorizontal: 12,
       gap: 40,
     },
@@ -257,6 +285,160 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     },
   });
 
+  const chatStyles = StyleSheet.create({
+    menu: {
+      flexDirection: "row",
+      gap: 12,
+    },
+    search: {
+      flexDirection: "row",
+      alignItems: "center",
+      flex: 1,
+      borderWidth: 2,
+      borderColor: colors.grayscale700,
+      borderStyle: "dashed",
+      borderRadius: 100,
+      paddingLeft: 24,
+    },
+    searchInput: {
+      flex: 1,
+      paddingVertical: 20,
+      paddingLeft: 16,
+      paddingRight: 24,
+      includeFontPadding: false,
+      fontSize: 14,
+      fontFamily: "Manrope-SemiBold",
+      color: colors.grayscale100,
+    },
+    add: {
+      width: 64,
+      height: 64,
+      borderRadius: 100,
+      backgroundColor: colors.grayscale100,
+      alignItems: "center",
+      justifyContent: "center",
+    },
+    list: {
+      gap: 16,
+    },
+    item: {
+      flexDirection: "row",
+      alignItems: "center",
+      gap: 12,
+    },
+    profile: {
+      width: 48,
+      height: 48,
+      borderRadius: 100,
+      backgroundColor: colors.grayscale800,
+    },
+    content: {
+      flex: 1,
+      gap: 4,
+    },
+    name: {
+      fontSize: 14,
+      color: colors.grayscale100,
+    },
+    preview: {
+      flexDirection: "row",
+      alignItems: "center",
+      gap: 6,
+    },
+    previewText: {
+      fontSize: 14,
+      color: colors.grayscale500,
+    },
+    unread: {
+      fontSize: 14,
+      color: colors.grayscale100,
+    },
+    dot: {
+      width: 2,
+      height: 2,
+      borderRadius: 100,
+      backgroundColor: colors.grayscale500,
+    },
+    count: {
+      width: 28,
+      height: 28,
+      borderRadius: 100,
+      backgroundColor: colors.grayscale100,
+      alignItems: "center",
+      justifyContent: "center",
+    },
+    countText: {
+      fontSize: 14,
+      color: colors.grayscale900,
+    },
+  });
+
+  const chatPageStyles = StyleSheet.create({
+    container: {
+      flex: 1,
+      paddingBottom: insets.bottom,
+    },
+    keyboard: {
+      flex: 1,
+      marginBottom: -6,
+    },
+    user: {
+      flexDirection: "row",
+      alignItems: "center",
+      gap: 16,
+      marginTop: 8,
+      paddingHorizontal: 16,
+    },
+    profile: {
+      width: 36,
+      height: 36,
+      borderRadius: 100,
+      backgroundColor: colors.grayscale800,
+    },
+    name: {
+      fontSize: 24,
+      color: colors.grayscale100,
+    },
+
+    chat: {
+      marginBottom: 12,
+      paddingHorizontal: 12,
+      flexDirection: "row",
+      gap: 12,
+    },
+    search: {
+      flexDirection: "row",
+      alignItems: "center",
+      flex: 1,
+      borderWidth: 2,
+      borderColor: colors.grayscale700,
+      borderStyle: "dashed",
+      borderRadius: 100,
+    },
+    searchInput: {
+      flex: 1,
+      paddingVertical: 20,
+      paddingHorizontal: 24,
+      includeFontPadding: false,
+      fontSize: 14,
+      fontFamily: "Manrope-SemiBold",
+      color: colors.grayscale100,
+    },
+    button: {
+      width: 64,
+      height: 64,
+      borderRadius: 100,
+      alignItems: "center",
+      justifyContent: "center",
+    },
+    add: {
+      backgroundColor: colors.grayscale100,
+    },
+    send: {
+      backgroundColor: colors.grayscale800,
+    },
+  });
+
   const getHexOpacity: GetHexOpacity = (hex, opacity) => {
     const hexOpacity = Math.round((opacity / 100) * 255).toString(16);
     return `${hex}${hexOpacity.length === 1 ? `0${hexOpacity}` : hexOpacity}`;
@@ -271,7 +453,11 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
           global: globalStyles,
           auth: authStyles,
           navbar: navbarStyles,
+          index: indexStyles,
+          page: pageStyles,
           home: homeStyles,
+          chat: chatStyles,
+          chatPage: chatPageStyles,
         },
         getHexOpacity,
       }}>

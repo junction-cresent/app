@@ -17,7 +17,7 @@ const Home = () => {
   return (
     <View style={styles.global.container}>
       <ScrollView>
-        <View style={styles.home.container}>
+        <View style={styles.index.container}>
           <View style={styles.home.top}>
             <View style={styles.home.topCurrent}>
               <Text style={styles.home.topCurrentTitle}>Current location</Text>

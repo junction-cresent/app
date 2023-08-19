@@ -1,3 +1,4 @@
+import type { ChatStackParamList } from "./chat/stack";
 import type { IndexStackParamList } from "./stack";
 import type { NavigatorScreenParams } from "@react-navigation/native";
 import type { StackNavigationProp } from "@react-navigation/stack";
@@ -8,10 +9,12 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 import { log } from "@app/utils/logging";
 
+import ChatStack from "./chat/stack";
 import IndexStack from "./stack";
 
 export type MainStackParamList = {
   IndexStack: NavigatorScreenParams<IndexStackParamList>;
+  ChatStack: NavigatorScreenParams<ChatStackParamList>;
 };
 export type MainStackNavigationProps = StackNavigationProp<MainStackParamList>;
 const Stack = createStackNavigator<MainStackParamList>();
@@ -24,6 +27,7 @@ const Main = () => {
         headerShown: false,
       }}>
       <Stack.Screen name="IndexStack" component={IndexStack} />
+      <Stack.Screen name="ChatStack" component={ChatStack} />
     </Stack.Navigator>
   );
 };
