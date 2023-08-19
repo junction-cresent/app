@@ -929,6 +929,126 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     },
   });
 
+  const profileStyles = StyleSheet.create({
+    container: {
+      paddingHorizontal: 16,
+    },
+    info: {
+      flexDirection: "row",
+      alignItems: "center",
+      gap: 16,
+      marginVertical: -24,
+    },
+    profile: {
+      width: 72,
+      height: 72,
+      borderRadius: 100,
+      backgroundColor: colors.grayscale800,
+    },
+    mix: {
+      gap: 4,
+    },
+    name: {
+      fontSize: 24,
+      color: colors.grayscale100,
+    },
+    id: {
+      fontSize: 16,
+      color: colors.grayscale500,
+    },
+    tags: {
+      flexDirection: "row",
+      alignItems: "center",
+      gap: 8,
+    },
+    tag: {
+      paddingVertical: 12,
+      paddingHorizontal: 20,
+      backgroundColor: colors.grayscale700,
+      borderRadius: 100,
+    },
+    tagText: {
+      fontSize: 12,
+      color: colors.grayscale100,
+    },
+    pages: {
+      flexDirection: "row",
+      alignItems: "center",
+      gap: 32,
+    },
+    page: {
+      fontSize: 20,
+      color: colors.grayscale700,
+    },
+    pageActive: {
+      fontSize: 20,
+      color: colors.grayscale100,
+    },
+    section: {
+      gap: 12,
+    },
+    sectionHeader: {
+      flexDirection: "row",
+      alignItems: "center",
+      gap: 16,
+    },
+    sectionTitle: {
+      fontSize: 20,
+      color: colors.grayscale600,
+    },
+    sectionLine: {
+      flex: 1,
+      height: 3,
+      borderRadius: 10,
+      backgroundColor: colors.grayscale600,
+      marginRight: -18,
+    },
+    text: {
+      fontSize: 16,
+      color: colors.grayscale100,
+    },
+    list: {
+      gap: 16,
+    },
+    food: {
+      flexDirection: "row",
+      alignItems: "center",
+      gap: 8,
+    },
+    foodProfile: {
+      width: 36,
+      height: 36,
+      borderRadius: 100,
+      backgroundColor: colors.grayscale800,
+    },
+    foodName: {
+      fontSize: 16,
+      color: colors.grayscale100,
+    },
+    place: {
+      flexDirection: "row",
+      alignItems: "center",
+      gap: 12,
+    },
+    placeProfile: {
+      width: 48,
+      height: 48,
+      borderRadius: 8,
+      backgroundColor: colors.grayscale800,
+    },
+    placeMix: {
+      gap: 2,
+    },
+    placeName: {
+      fontSize: 16,
+      color: colors.grayscale100,
+    },
+    placeAddress: {
+      fontSize: 12,
+      color: colors.grayscale400,
+    },
+  });
+
   const getHexOpacity: GetHexOpacity = (hex, opacity) => {
     const hexOpacity = Math.round((opacity / 100) * 255).toString(16);
     return `${hex}${hexOpacity.length === 1 ? `0${hexOpacity}` : hexOpacity}`;
@@ -952,6 +1072,7 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
           near: nearStyles,
           chat: chatStyles,
           chatting: chattingStyles,
+          profile: profileStyles,
         },
         getHexOpacity,
       }}>

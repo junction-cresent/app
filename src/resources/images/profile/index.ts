@@ -9,6 +9,7 @@ const profile = {
   Aoba: require("./Aoba.png"),
   Tsubaki: require("./Tsubaki.png"),
   Rikka: require("./Rikka.png"),
+  fxxntrbl: require("./fxxntrbl.png"),
 };
 
 export default profile;
