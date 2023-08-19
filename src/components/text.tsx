@@ -20,6 +20,7 @@ const CustomText: React.FC<CustomTextProps> = ({
 const styles = StyleSheet.create({
   text: {
     includeFontPadding: false,
+    fontFamily: "Manrope-SemiBold",
   },
 });
 

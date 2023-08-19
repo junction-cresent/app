@@ -11,3 +11,11 @@ export const authAtom = atom({
   },
   effects_UNSTABLE: [ReactNativeRecoilPersist.persistAtom],
 });
+
+export const dimensionsAtom = atom({
+  key: "dimensionsAtom",
+  default: {
+    width: 0,
+    height: 0,
+  },
+});

@@ -3,6 +3,10 @@ import { StyleSheet, ViewStyle, TextStyle, ImageStyle } from "react-native";
 import type { EdgeInsets } from "react-native-safe-area-context";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
+import { useRecoilValue } from "recoil";
+
+import { dimensionsAtom } from "@app/utils/atoms";
+
 type GetHexOpacity = (hex: string, opacity: number) => string;
 type ViewStyles = {
   [key: string]: ViewStyle;
@@ -38,6 +42,7 @@ interface ThemeProviderProps {
 }
 const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
   const insets = useSafeAreaInsets();
+  const { width } = useRecoilValue(dimensionsAtom);
 
   const colors = {
     grayscale100: "#EBEBEB",
@@ -118,7 +123,6 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     },
     ButtonText: {
       fontSize: 16,
-      fontFamily: "Manrope-Bold",
       color: colors.grayscale900,
     },
   });
@@ -152,11 +156,104 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     },
     focusedText: {
       fontSize: 12,
-      fontFamily: "Manrope-Bold",
       color: colors.grayscale900,
     },
     unfocused: {
       padding: 8,
+    },
+  });
+
+  const homeStyles = StyleSheet.create({
+    container: {
+      paddingTop: insets.top + 12,
+      paddingHorizontal: 12,
+      gap: 40,
+    },
+
+    top: {
+      flexDirection: "row",
+      alignItems: "center",
+      justifyContent: "space-between",
+      padding: 4,
+      paddingRight: 0,
+      marginBottom: -8,
+    },
+    topCurrent: {
+      gap: 2,
+    },
+    topCurrentTitle: {
+      fontSize: 14,
+      color: colors.grayscale500,
+    },
+    topCurrentLocation: {
+      flexDirection: "row",
+      alignItems: "center",
+      gap: 12,
+    },
+    topCurrentLocationText: {
+      fontSize: 24,
+      color: colors.grayscale100,
+    },
+    notification: {
+      width: 54 - 4,
+      height: 54 - 4,
+      borderRadius: 100,
+      borderWidth: 2,
+      borderColor: colors.grayscale700,
+      alignItems: "center",
+      justifyContent: "center",
+    },
+    section: {
+      gap: 12,
+    },
+    sectionTitle: {
+      fontSize: 20,
+      color: colors.grayscale100,
+      paddingLeft: 4,
+    },
+    dashedBox: {
+      paddingVertical: 16 - 2,
+      paddingHorizontal: 20 - 2,
+      borderWidth: 2,
+      borderColor: colors.grayscale700,
+      borderStyle: "dashed",
+      borderRadius: 16,
+    },
+    archivementRow: {
+      height: 86 - 4,
+      flexDirection: "row",
+      alignItems: "flex-end",
+      justifyContent: "flex-end",
+      gap: 2,
+    },
+    archivementColumn: {
+      alignItems: "flex-end",
+      gap: 2,
+    },
+    achievement: {
+      width: (width - 64) / 15 - (2 * 14) / 15,
+      height: (width - 64) / 15 - (2 * 14) / 15,
+      borderRadius: 2,
+      backgroundColor: colors.grayscale800,
+    },
+    seed: {
+      flexDirection: "row",
+      alignItems: "center",
+      justifyContent: "space-between",
+    },
+    seedText: {
+      fontSize: 16,
+      color: colors.grayscale100,
+    },
+    seedCharge: {
+      paddingVertical: 8,
+      paddingHorizontal: 16,
+      backgroundColor: colors.grayscale100,
+      borderRadius: 100,
+    },
+    seedChargeText: {
+      fontSize: 12,
+      color: colors.grayscale900,
     },
   });
 
@@ -174,6 +271,7 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
           global: globalStyles,
           auth: authStyles,
           navbar: navbarStyles,
+          home: homeStyles,
         },
         getHexOpacity,
       }}>
