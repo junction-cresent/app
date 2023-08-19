@@ -1,5 +1,9 @@
+import type { MainStackNavigationProps } from "@app/screens/main";
+
 import React from "react";
 import { ScrollView, View, TouchableOpacity } from "react-native";
+
+import { useNavigation } from "@react-navigation/native";
 
 import { SplashContext } from "@app/context/splash";
 import { ThemeContext } from "@app/context/theme";
@@ -7,6 +11,7 @@ import { SvgIcon, Text } from "@root/src/components";
 
 const Home = () => {
   const { colors, styles } = React.useContext(ThemeContext);
+  const navigation = useNavigation<MainStackNavigationProps>();
 
   const { loaded } = React.useContext(SplashContext);
 
@@ -63,6 +68,11 @@ const Home = () => {
             <View style={styles.home.gridRow}>
               <TouchableOpacity
                 style={[styles.home.gridItem, styles.home.gridItemOrange]}
+                onPress={() => {
+                  navigation.navigate("HomeStack", {
+                    screen: "Matching",
+                  });
+                }}
               />
               <TouchableOpacity
                 style={[styles.home.gridItem, styles.home.gridItemYellow]}

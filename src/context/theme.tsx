@@ -20,15 +20,7 @@ type ImageStyles = {
 const ThemeContext = React.createContext<{
   insets: EdgeInsets;
   colors: {
-    grayscale100: string;
-    grayscale200: string;
-    grayscale300: string;
-    grayscale400: string;
-    grayscale500: string;
-    grayscale600: string;
-    grayscale700: string;
-    grayscale800: string;
-    grayscale900: string;
+    [key: string]: string;
   };
   styles: {
     [key: string]: ViewStyles | TextStyles | ImageStyles;
@@ -190,8 +182,15 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
       alignItems: "center",
       justifyContent: "space-between",
       height: 62,
-      paddingHorizontal: 12,
-      paddingLeft: 16,
+      paddingLeft: 4,
+    },
+    headerButton: {
+      width: 54,
+      height: 54,
+      borderRadius: 100,
+      borderWidth: 2,
+      alignItems: "center",
+      justifyContent: "center",
     },
   });
 
@@ -305,6 +304,164 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     },
   });
 
+  const matchingStyles = StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: colors.orange900,
+      paddingHorizontal: 12,
+    },
+    headerButton: {
+      borderColor: colors.orange700,
+    },
+    menus: {
+      flexDirection: "row",
+      alignItems: "center",
+      justifyContent: "space-between",
+      marginTop: 16,
+    },
+    menu: {
+      flexDirection: "row",
+      alignItems: "center",
+      gap: 12,
+      paddingVertical: 12,
+      paddingLeft: 16,
+      paddingRight: 20,
+      borderWidth: 2,
+      borderColor: colors.orange700,
+      borderRadius: 100,
+    },
+    menuText: {
+      fontSize: 14,
+      color: colors.orange100,
+    },
+    list: {
+      paddingHorizontal: 12,
+      marginTop: 16,
+    },
+    card: {
+      padding: 16 - 2,
+      gap: 40,
+      borderWidth: 2,
+      borderColor: colors.orange700,
+      borderRadius: 16,
+    },
+    info: {
+      gap: 16,
+    },
+    user: {
+      flexDirection: "row",
+      alignItems: "center",
+      gap: 16,
+    },
+    profile: {
+      width: 36,
+      height: 36,
+      borderRadius: 100,
+      backgroundColor: colors.orange800,
+    },
+    name: {
+      fontSize: 24,
+      color: colors.orange100,
+    },
+    line: {
+      flex: 1,
+      height: 2,
+      borderRadius: 1,
+      backgroundColor: colors.orange600,
+    },
+    introducing: {
+      fontSize: 16,
+      color: colors.orange100,
+    },
+    tags: {
+      flexDirection: "row",
+      alignItems: "center",
+      gap: 8,
+    },
+    tag: {
+      paddingVertical: 12,
+      paddingHorizontal: 20,
+      backgroundColor: colors.orange700,
+      borderRadius: 100,
+    },
+    tagText: {
+      fontSize: 12,
+      color: colors.orange100,
+    },
+    section: {
+      gap: 12,
+    },
+    sectionTitle: {
+      fontSize: 16,
+      color: colors.orange600,
+    },
+    place: {
+      flexDirection: "row",
+      alignItems: "center",
+      gap: 12,
+    },
+    placeProfile: {
+      width: 48,
+      height: 48,
+      borderRadius: 8,
+      backgroundColor: colors.orange800,
+    },
+    placeInfo: {
+      gap: 2,
+    },
+    placeName: {
+      fontSize: 16,
+      color: colors.orange100,
+    },
+    placeAddress: {
+      fontSize: 12,
+      color: colors.orange400,
+    },
+    food: {
+      flexDirection: "row",
+      alignItems: "center",
+      gap: 8,
+    },
+    foodProfile: {
+      width: 36,
+      height: 36,
+      borderRadius: 100,
+      backgroundColor: colors.orange800,
+    },
+    foodName: {
+      fontSize: 16,
+      color: colors.orange100,
+    },
+    snap: {
+      flex: 1,
+    },
+    snapItem: {
+      paddingTop: 16,
+    },
+    snapInfo: {
+      flex: 1,
+      alignItems: "center",
+      justifyContent: "center",
+      gap: 8,
+    },
+    snapText: {
+      fontSize: 14,
+      color: colors.orange500,
+    },
+    button: {
+      alignItems: "center",
+      paddingVertical: 20,
+      paddingHorizontal: 16,
+      backgroundColor: colors.orange100,
+      borderRadius: 100,
+      marginBottom: insets.bottom + 6,
+    },
+    buttonText: {
+      fontSize: 14,
+      color: colors.orange900,
+    },
+  });
+
   const chatStyles = StyleSheet.create({
     menu: {
       flexDirection: "row",
@@ -397,6 +554,7 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     container: {
       flex: 1,
       paddingBottom: insets.bottom,
+      paddingHorizontal: 12,
     },
     keyboard: {
       flex: 1,
@@ -408,7 +566,7 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
       gap: 16,
       marginTop: 8,
       marginBottom: 16,
-      paddingHorizontal: 16,
+      paddingHorizontal: 4,
     },
     profile: {
       width: 36,
@@ -420,8 +578,8 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
       fontSize: 24,
       color: colors.grayscale100,
     },
-
     bubbles: {
+      marginHorizontal: -12,
       paddingHorizontal: 12,
       paddingVertical: 16,
     },
@@ -450,10 +608,8 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
       fontSize: 14,
       color: colors.grayscale100,
     },
-
     chat: {
       marginBottom: 12,
-      paddingHorizontal: 12,
       flexDirection: "row",
       gap: 12,
     },
@@ -507,6 +663,7 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
           index: indexStyles,
           page: pageStyles,
           home: homeStyles,
+          matching: matchingStyles,
           chat: chatStyles,
           chatPage: chatPageStyles,
         },
