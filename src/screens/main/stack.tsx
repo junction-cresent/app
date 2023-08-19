@@ -10,7 +10,7 @@ import type {
 } from "@react-navigation/native";
 
 import React from "react";
-import { View, Pressable } from "react-native";
+import { View, Pressable, Animated } from "react-native";
 import ReactNativeHapticFeedback from "react-native-haptic-feedback";
 
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -136,32 +136,23 @@ const Navbar: React.FC<NavbarProps> = ({
               accessibilityRole="button"
               accessibilityState={isFocused ? { selected: true } : {}}
               accessibilityLabel={options.tabBarAccessibilityLabel}>
-              {isFocused ? (
-                <View
-                  style={[
-                    styles.navbar.focused,
-                    Object.keys(pageConfig).indexOf(title) === 0 && {
-                      marginLeft: -12,
-                    },
-                    Object.keys(pageConfig).indexOf(title) ===
-                      Object.keys(pageConfig).length - 1 && {
-                      marginRight: -12,
-                    },
-                  ]}>
-                  <SvgIcon
-                    name={`Navbar${title}FocusedSvg` as SvgIconName}
-                    fill={colors.grayscale900}
-                  />
+              <Animated.View
+                style={[
+                  styles.navbar.item,
+                  isFocused && styles.navbar.focused,
+                ]}>
+                <SvgIcon
+                  name={
+                    `Navbar${title}${
+                      isFocused ? "Focused" : ""
+                    }Svg` as SvgIconName
+                  }
+                  fill={isFocused ? colors.grayscale900 : colors.grayscale100}
+                />
+                {isFocused && (
                   <Text style={styles.navbar.focusedText}>{title}</Text>
-                </View>
-              ) : (
-                <View style={styles.navbar.unfocused}>
-                  <SvgIcon
-                    name={`Navbar${title}Svg` as SvgIconName}
-                    fill={colors.grayscale100}
-                  />
-                </View>
-              )}
+                )}
+              </Animated.View>
             </Pressable>
           );
         })}

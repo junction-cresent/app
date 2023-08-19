@@ -138,28 +138,33 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     inner: {
       flexDirection: "row",
       alignItems: "center",
-      gap: 16,
       paddingVertical: 8,
-      paddingHorizontal: 20,
+      paddingHorizontal: 8,
       backgroundColor: colors.grayscale800,
       borderRadius: 100,
     },
-    focused: {
+    item: {
       flexDirection: "row",
       alignItems: "center",
       gap: 8,
       paddingVertical: 12,
-      paddingLeft: 16,
-      paddingRight: 20,
-      backgroundColor: colors.grayscale100,
+      paddingHorizontal: 16,
       borderRadius: 100,
     },
+    focused: {
+      backgroundColor: colors.grayscale100,
+      paddingLeft: 16,
+      paddingRight: 20,
+    },
     focusedText: {
+      width: 38,
       fontSize: 12,
+      textAlign: "center",
       color: colors.grayscale900,
     },
     unfocused: {
-      padding: 8,
+      paddingVertical: 12,
+      paddingHorizontal: 16,
     },
   });
 
