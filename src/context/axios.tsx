@@ -40,11 +40,11 @@ const AxiosProvider: React.FC<AxiosProviderProps> = ({ children }) => {
   // const setUser = useSetRecoilState(userAtom);
   React.useEffect(() => {
     log("AUTH", "Token Updated");
-    if (auth.authenticated) {
-      const user = jwt_decode(auth.accessToken);
-      log("AUTH", `User Info Updated: ${user}`);
-      // setUser(user);
-    }
+    // if (auth.authenticated) {
+    //   const user = jwt_decode(auth.accessToken);
+    //   log("AUTH", `User Info Updated: ${user}`);
+    // setUser(user);
+    // }
   }, [auth]);
 
   const publicAxios = axios.create({

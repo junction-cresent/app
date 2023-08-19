@@ -5,17 +5,15 @@ import { GoogleSignin } from "@react-native-google-signin/google-signin";
 import { useSetRecoilState } from "recoil";
 
 import { Text, SvgIcon } from "@app/components";
-import { AxiosContext } from "@app/context/axios";
 import { SplashContext } from "@app/context/splash";
 import { ThemeContext } from "@app/context/theme";
 import { authAtom } from "@app/utils/atoms";
 import { log } from "@app/utils/logging";
 
 const Auth = () => {
-  const { viewStyles, textStyles } = React.useContext(ThemeContext);
+  const { styles } = React.useContext(ThemeContext);
 
   const { loaded } = React.useContext(SplashContext);
-  const { publicAxios } = React.useContext(AxiosContext);
   const setAuth = useSetRecoilState(authAtom);
 
   const [loading, setLoading] = React.useState(false);
@@ -24,12 +22,13 @@ const Auth = () => {
 
     try {
       const { idToken } = await GoogleSignin.signIn();
-      const { data } = await publicAxios.post("/auth/login", {
-        token: idToken,
-      });
+      // const { data } = await publicAxios.post("/auth/login", {
+      //   token: idToken,
+      // });
+      if (!idToken) throw new Error("No token");
       setAuth({
-        accessToken: data.accessToken,
-        refreshToken: data.refreshToken,
+        accessToken: "",
+        refreshToken: "",
         authenticated: true,
       });
     } catch (e) {
@@ -45,14 +44,14 @@ const Auth = () => {
 
   log("REND", "Root Stack > Auth Stack");
   return (
-    <View style={viewStyles.container}>
-      <View style={viewStyles.authLogoContainer}>
+    <View style={styles.global.container}>
+      <View style={styles.auth.logoContainer}>
         <SvgIcon name="Logo160" />
       </View>
-      <View style={viewStyles.authContainer}>
-        <TouchableOpacity style={viewStyles.authButton} onPress={login}>
+      <View style={styles.auth.container}>
+        <TouchableOpacity style={styles.auth.Button} onPress={login}>
           <SvgIcon name="GoogleLogin" />
-          <Text style={textStyles.authButton}>Login with Google Account</Text>
+          <Text style={styles.auth.ButtonText}>Login with Google Account</Text>
         </TouchableOpacity>
       </View>
     </View>
