@@ -265,6 +265,87 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
       paddingLeft: 10,
       borderRadius: 100,
     },
+    reContainer: {
+      flex: 1,
+      justifyContent: "flex-end",
+    },
+    window: {
+      position: "absolute",
+      zIndex: 1,
+      top: "50%",
+      transform: [{ translateY: -50 }],
+      left: 0,
+      right: 0,
+      gap: 4,
+    },
+    windowHeader: {
+      flexDirection: "row",
+      alignItems: "center",
+      gap: 16,
+      padding: 4,
+    },
+    windowTitle: {
+      fontSize: 14,
+      color: colors.grayscale300,
+    },
+    windowOrangeTitle: {
+      fontSize: 14,
+      color: colors.orange300,
+    },
+    windowPurpleTitle: {
+      fontSize: 14,
+      color: colors.purple300,
+    },
+    windowYellowTitle: {
+      fontSize: 14,
+      color: colors.yellow300,
+    },
+    windowLine: {
+      flex: 1,
+      height: 2,
+      borderRadius: 1,
+      backgroundColor: colors.grayscale500,
+    },
+    windowOrangeLine: {
+      backgroundColor: colors.orange500,
+    },
+    windowPurpleLine: {
+      backgroundColor: colors.purple500,
+    },
+    windowYellowLine: {
+      backgroundColor: colors.yellow500,
+    },
+    content: {
+      paddingHorizontal: 4,
+    },
+    contentText: {
+      fontSize: 20,
+      color: colors.grayscale100,
+    },
+    contentOrangeText: {
+      fontSize: 20,
+      color: colors.orange400,
+    },
+    contentOrangeTextHighlight: {
+      fontSize: 20,
+      color: colors.orange100,
+    },
+    contentPurpleText: {
+      fontSize: 20,
+      color: colors.purple400,
+    },
+    contentPurpleTextHighlight: {
+      fontSize: 20,
+      color: colors.purple100,
+    },
+    contentYellowText: {
+      fontSize: 20,
+      color: colors.yellow400,
+    },
+    contentYellowTextHighlight: {
+      fontSize: 20,
+      color: colors.yellow100,
+    },
   });
 
   const homeStyles = StyleSheet.create({
@@ -527,6 +608,23 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
       fontSize: 14,
       color: colors.orange900,
     },
+    accepted: {
+      flexDirection: "row",
+      alignSelf: "center",
+      alignItems: "center",
+      gap: 20,
+      marginTop: 72,
+    },
+    acceptedProfile: {
+      width: 54,
+      height: 54,
+      borderRadius: 100,
+      backgroundColor: colors.orange800,
+    },
+    acceptedName: {
+      fontSize: 36,
+      color: colors.orange100,
+    },
   });
 
   const challengesStyles = StyleSheet.create({
@@ -703,6 +801,420 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     buttonText: {
       fontSize: 14,
       color: colors.purple900,
+    },
+  });
+
+  const challengeStyles = StyleSheet.create({
+    me: {
+      position: "absolute",
+      zIndex: 1,
+      left: "50%",
+      top: "50%",
+      width: 36,
+      height: 36,
+      borderRadius: 100,
+      backgroundColor: colors.purple,
+      borderWidth: 6,
+      borderColor: colors.purple100,
+      transform: [{ translateX: -18 }, { translateY: -18 }],
+    },
+    marker: {
+      position: "absolute",
+      zIndex: 1,
+      left: "50%",
+      top: "50%",
+      transform: [{ translateX: -90 }, { translateY: -180 }],
+    },
+    window: {
+      position: "absolute",
+      zIndex: 1,
+      left: 12,
+      right: 12,
+      bottom: insets.bottom + 6,
+      gap: 12,
+      pointerEvents: "none",
+    },
+    windowActive: {
+      pointerEvents: "auto",
+    },
+    box: {
+      padding: 12,
+      gap: 16,
+      backgroundColor: colors.purple900,
+      borderRadius: 16,
+    },
+    boxName: {
+      fontSize: 16,
+      color: colors.purple600,
+      paddingLeft: 4,
+      paddingTop: 4,
+    },
+    info: {
+      flexDirection: "row",
+      alignItems: "center",
+      gap: 12,
+      paddingHorizontal: 4,
+    },
+    profile: {
+      width: 54,
+      height: 54,
+      borderRadius: 8,
+      backgroundColor: colors.purple800,
+    },
+    mix: {
+      gap: 4,
+    },
+    name: {
+      fontSize: 20,
+      color: colors.purple100,
+    },
+    address: {
+      fontSize: 12,
+      color: colors.purple400,
+    },
+    content: {
+      fontSize: 14,
+      color: colors.purple100,
+      paddingHorizontal: 4,
+    },
+    images: {
+      height: 100,
+      flexDirection: "row",
+      gap: 12,
+    },
+    image: {
+      flex: 1,
+      height: 100,
+      borderRadius: 16,
+      backgroundColor: colors.purple800,
+    },
+    action: {
+      flexDirection: "row",
+      alignItems: "center",
+      gap: 16,
+    },
+    line: {
+      flex: 1,
+      height: 3,
+      borderRadius: 2,
+      backgroundColor: colors.purple700,
+      marginRight: -18,
+    },
+    button: {
+      height: 54,
+      paddingLeft: 16 - 2,
+      paddingRight: 20 - 2,
+      gap: 12,
+      borderWidth: 2,
+      borderColor: colors.purple700,
+      borderRadius: 100,
+      flexDirection: "row",
+      alignItems: "center",
+      justifyContent: "center",
+    },
+    buttonText: {
+      fontSize: 14,
+      color: colors.purple100,
+    },
+  });
+
+  const groupingStyles = StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: colors.yellow900,
+      paddingHorizontal: 12,
+    },
+    headerFloating: {
+      backgroundColor: colors.yellow900,
+    },
+    headerButton: {
+      borderColor: colors.yellow700,
+    },
+    search: {
+      flexDirection: "row",
+      alignItems: "center",
+      flex: 1,
+      borderWidth: 2,
+      borderColor: colors.yellow700,
+      borderStyle: "dashed",
+      borderRadius: 100,
+      paddingLeft: 24 - 2,
+      marginTop: 16,
+    },
+    searchInput: {
+      flex: 1,
+      paddingVertical: 20 - 2,
+      paddingLeft: 16,
+      paddingRight: 24 - 2,
+      includeFontPadding: false,
+      fontSize: 14,
+      fontFamily: "Manrope-SemiBold",
+      color: colors.yellow100,
+    },
+    content: {
+      gap: 40,
+    },
+
+    section: {
+      gap: 12,
+    },
+    sectionTitle: {
+      fontSize: 20,
+      color: colors.yellow600,
+    },
+    list: {
+      gap: 16,
+    },
+    food: {
+      flexDirection: "row",
+      alignItems: "center",
+      gap: 12,
+    },
+    foodProfile: {
+      width: 54,
+      height: 54,
+      borderRadius: 100,
+      backgroundColor: colors.yellow800,
+    },
+    placeProfile: {
+      width: 54,
+      height: 54,
+      borderRadius: 8,
+      backgroundColor: colors.yellow800,
+    },
+    foodName: {
+      fontSize: 20,
+      color: colors.yellow100,
+    },
+    foodAddress: {
+      fontSize: 12,
+      color: colors.yellow400,
+    },
+
+    button: {
+      flexDirection: "row",
+      alignItems: "center",
+      justifyContent: "center",
+      paddingVertical: 20,
+      paddingHorizontal: 16,
+      backgroundColor: colors.yellow100,
+      borderRadius: 100,
+      marginBottom: insets.bottom + 6,
+      gap: 12,
+    },
+    buttonText: {
+      fontSize: 14,
+      color: colors.yellow900,
+    },
+  });
+
+  const groupStyles = StyleSheet.create({
+    me: {
+      position: "absolute",
+      zIndex: 1,
+      left: "50%",
+      top: "50%",
+      width: 36,
+      height: 36,
+      borderRadius: 100,
+      backgroundColor: colors.yellow,
+      borderWidth: 6,
+      borderColor: colors.purple100,
+      transform: [{ translateX: -18 }, { translateY: -18 }],
+    },
+    marker: {
+      position: "absolute",
+      zIndex: 1,
+      left: "50%",
+      top: "50%",
+      transform: [{ translateX: -90 }, { translateY: -180 }],
+    },
+    window: {
+      position: "absolute",
+      zIndex: 1,
+      left: 12,
+      right: 12,
+      bottom: insets.bottom + 6,
+      pointerEvents: "none",
+    },
+    windowActive: {
+      pointerEvents: "auto",
+    },
+    box: {
+      padding: 16,
+      gap: 20,
+      backgroundColor: colors.yellow900,
+      borderRadius: 16,
+    },
+    boxTitle: {
+      fontSize: 16,
+      color: colors.yellow600,
+    },
+    bigText: {
+      fontSize: 24,
+      color: colors.yellow100,
+    },
+    action: {
+      flexDirection: "row",
+      alignItems: "center",
+      gap: 16,
+      marginHorizontal: -4,
+      marginBottom: -4,
+    },
+    actionMan: {
+      marginBottom: -8,
+    },
+    actionText: {
+      fontSize: 20,
+      color: colors.yellow600,
+    },
+    line: {
+      flex: 1,
+      height: 3,
+      borderRadius: 2,
+      backgroundColor: colors.yellow700,
+      marginRight: -18,
+    },
+    button: {
+      height: 54,
+      paddingLeft: 16 - 2,
+      paddingRight: 20 - 2,
+      gap: 12,
+      borderWidth: 2,
+      borderColor: colors.yellow700,
+      borderRadius: 100,
+      flexDirection: "row",
+      alignItems: "center",
+      justifyContent: "center",
+    },
+    buttonText: {
+      fontSize: 14,
+      color: colors.yellow100,
+    },
+    newGroup: {
+      position: "absolute",
+      right: 12,
+      bottom: insets.bottom + 8,
+      flexDirection: "row",
+      alignItems: "center",
+      justifyContent: "center",
+      gap: 8,
+      padding: 20,
+      paddingLeft: 18,
+      borderRadius: 100,
+      backgroundColor: colors.yellow100,
+    },
+    newGroupText: {
+      fontSize: 14,
+      color: colors.yellow900,
+    },
+    items: {
+      gap: 16,
+    },
+    item: {
+      flexDirection: "row",
+      alignItems: "center",
+      gap: 12,
+    },
+    itemProfile: {
+      width: 54,
+      height: 54,
+      borderRadius: 8,
+      backgroundColor: colors.yellow800,
+    },
+    itemProfileCircle: {
+      width: 54,
+      height: 54,
+      borderRadius: 100,
+      backgroundColor: colors.yellow800,
+    },
+    itemMix: {
+      gap: 4,
+    },
+    itemName: {
+      fontSize: 20,
+      color: colors.yellow100,
+    },
+    itemAddress: {
+      fontSize: 12,
+      color: colors.yellow400,
+    },
+    infoBox: {
+      padding: 16,
+      backgroundColor: colors.grayscale900,
+      borderRadius: 16,
+      marginBottom: 12,
+      gap: 12,
+    },
+    infoBoxDistance: {
+      fontSize: 24,
+      color: colors.grayscale100,
+    },
+    infoBoxDesc: {
+      fontSize: 16,
+      color: colors.grayscale400,
+    },
+    groupBoxs: {
+      flexDirection: "row",
+      gap: 12,
+    },
+    groupBox: {
+      flexDirection: "row",
+      alignItems: "center",
+      justifyContent: "center",
+      gap: 12,
+      flex: 1,
+      padding: 20,
+      paddingLeft: 16,
+      borderRadius: 100,
+    },
+    groupBoxBlack: {
+      backgroundColor: colors.grayscale900,
+    },
+    groupBoxWhite: {
+      backgroundColor: colors.grayscale100,
+    },
+    groupBoxTextBlack: {
+      fontSize: 14,
+      color: colors.grayscale100,
+    },
+    groupBoxTextWhite: {
+      fontSize: 14,
+      color: colors.grayscale900,
+    },
+    close: {
+      width: 64,
+      height: 64,
+      borderRadius: 100,
+      backgroundColor: colors.yellow900,
+      marginBottom: 12,
+      alignItems: "center",
+      justifyContent: "center",
+    },
+    user: {
+      flexDirection: "row",
+      gap: 12,
+    },
+    userProfile: {
+      width: 48,
+      height: 48,
+      borderRadius: 100,
+      backgroundColor: colors.yellow800,
+    },
+    userMix: {
+      gap: 4,
+    },
+    userNR: {
+      fontSize: 12,
+      color: colors.yellow400,
+    },
+    userName: {
+      fontSize: 20,
+      color: colors.yellow100,
+    },
+    userCon: {
+      flexDirection: "row",
+      gap: 12,
     },
   });
 
@@ -927,11 +1439,53 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     send: {
       backgroundColor: colors.grayscale800,
     },
+    over: {
+      position: "absolute",
+      zIndex: 10,
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      alignItems: "stretch",
+      justifyContent: "flex-end",
+      paddingBottom: 88,
+      pointerEvents: "none",
+    },
+    overActive: {
+      pointerEvents: "auto",
+    },
+    overInner: {
+      backgroundColor: colors.grayscale800,
+      borderRadius: 16,
+      padding: 12,
+      gap: 16,
+    },
+    overItem: {
+      flexDirection: "row",
+      alignItems: "center",
+      gap: 12,
+    },
+    overButton: {
+      width: 54,
+      height: 54,
+      borderRadius: 100,
+      borderWidth: 2,
+      borderColor: colors.grayscale700,
+      alignItems: "center",
+      justifyContent: "center",
+    },
+    overButtonText: {
+      fontSize: 16,
+      color: colors.grayscale100,
+    },
   });
 
   const profileStyles = StyleSheet.create({
     container: {
       paddingHorizontal: 16,
+    },
+    header: {
+      marginHorizontal: -4,
     },
     info: {
       flexDirection: "row",
@@ -1069,6 +1623,9 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
           matching: matchingStyles,
           challenges: challengesStyles,
           detail: detailStyles,
+          challenge: challengeStyles,
+          grouping: groupingStyles,
+          group: groupStyles,
           near: nearStyles,
           chat: chatStyles,
           chatting: chattingStyles,

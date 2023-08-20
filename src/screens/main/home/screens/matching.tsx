@@ -8,8 +8,12 @@ import { useNavigation } from "@react-navigation/native";
 
 import { SvgIcon, Text } from "@app/components";
 import { ThemeContext } from "@app/context/theme";
+import FoodsData from "@app/resources/data/foods.json";
 import MatchingData from "@app/resources/data/matching.json";
-import usersData from "@app/resources/data/users.json";
+import PlacesData from "@app/resources/data/places.json";
+import UsersData from "@app/resources/data/users.json";
+import food from "@app/resources/images/food";
+import place from "@app/resources/images/place";
 import profile from "@app/resources/images/profile";
 
 const Matching = () => {
@@ -17,15 +21,14 @@ const Matching = () => {
   const navigation = useNavigation<MainStackNavigationProps>();
 
   const [height, setHeight] = React.useState(0);
+  const [current, setCurrent] = React.useState(0);
 
-  const data = Object.entries(MatchingData).map(([key, value]) => {
+  const arrayData = Object.entries(MatchingData).map(([key, value]) => {
     return {
       id: key,
       ...value,
     };
   });
-
-  console.log(data);
 
   return (
     <View style={styles.matching.container}>
@@ -59,7 +62,7 @@ const Matching = () => {
         {height > 0 && (
           <Carousel
             vertical
-            data={data}
+            data={arrayData}
             renderItem={(data) => (
               <View
                 style={[
@@ -68,11 +71,7 @@ const Matching = () => {
                     height: height,
                   },
                 ]}>
-                <Card
-                  id={data.item.id}
-                  introducing={data.item.introducing}
-                  user={usersData[data.item.user]}
-                />
+                <Card matching={data.item} user={UsersData[data.item.user]} />
                 <View style={styles.matching.snapInfo}>
                   <SvgIcon name="DownArrowSvg" fill={colors.orange500} />
                   <Text style={styles.matching.snapText}>
@@ -87,12 +86,21 @@ const Matching = () => {
             inactiveSlideOpacity={1}
             useScrollView
             onScrollIndexChanged={(index) => {
-              console.log(index);
+              setCurrent(index);
             }}
           />
         )}
       </View>
-      <TouchableOpacity style={styles.matching.button}>
+      <TouchableOpacity
+        style={styles.matching.button}
+        onPress={() => {
+          navigation.replace("HomeStack", {
+            screen: "Request",
+            params: {
+              data: UsersData[arrayData[current].user],
+            },
+          });
+        }}>
         <Text style={styles.matching.buttonText}>Send Match Request</Text>
       </TouchableOpacity>
     </View>
@@ -100,11 +108,10 @@ const Matching = () => {
 };
 
 interface CardProps {
-  id: string;
-  introducing: string;
-  user: (typeof usersData)[keyof typeof usersData];
+  matching: (typeof MatchingData)[keyof typeof MatchingData];
+  user: (typeof UsersData)[keyof typeof UsersData];
 }
-const Card: React.FC<CardProps> = ({ id, introducing, user }) => {
+const Card: React.FC<CardProps> = ({ matching, user }) => {
   const { styles } = React.useContext(ThemeContext);
 
   return (
@@ -119,24 +126,31 @@ const Card: React.FC<CardProps> = ({ id, introducing, user }) => {
           <Text style={styles.matching.name}>{user.name}</Text>
           <View style={styles.matching.line} />
         </View>
-        <Text style={styles.matching.introducing}>“{introducing}”</Text>
+        <Text style={styles.matching.introducing}>
+          “{matching.introducing}”
+        </Text>
         <View style={styles.matching.tags}>
-          <View style={styles.matching.tag}>
-            <Text style={styles.matching.tagText}>Spicy Lover</Text>
-          </View>
-          <View style={styles.matching.tag}>
-            <Text style={styles.matching.tagText}>Korean Food Lover</Text>
-          </View>
+          {matching.tags.map((tag, index) => (
+            <View key={index} style={styles.matching.tag}>
+              <Text style={styles.matching.tagText}>{tag}</Text>
+            </View>
+          ))}
         </View>
       </View>
       <View style={styles.matching.section}>
         <Text style={styles.matching.sectionTitle}>Favorite Restaurant</Text>
         <View style={styles.matching.place}>
-          <View style={styles.matching.placeProfile} />
+          <Image
+            source={place[PlacesData[matching.place].images[0]]}
+            style={styles.matching.placeProfile}
+            resizeMode="cover"
+          />
           <View style={styles.matching.placeInfo}>
-            <Text style={styles.matching.placeName}>까치네</Text>
+            <Text style={styles.matching.placeName}>
+              {PlacesData[matching.place].name}
+            </Text>
             <Text style={styles.matching.placeAddress}>
-              18, Cheongpa-ro 45-gil, Yongsan-gu, Seoul
+              {PlacesData[matching.place].address}
             </Text>
           </View>
         </View>
@@ -144,8 +158,14 @@ const Card: React.FC<CardProps> = ({ id, introducing, user }) => {
       <View style={styles.matching.section}>
         <Text style={styles.matching.sectionTitle}>Favorite Menu</Text>
         <View style={styles.matching.food}>
-          <View style={styles.matching.foodProfile} />
-          <Text style={styles.matching.foodName}>Tofu Stew</Text>
+          <Image
+            source={food[FoodsData[matching.food].image]}
+            style={styles.matching.foodProfile}
+            resizeMode="cover"
+          />
+          <Text style={styles.matching.foodName}>
+            {FoodsData[matching.food].name}
+          </Text>
         </View>
       </View>
     </View>

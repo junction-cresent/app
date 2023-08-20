@@ -4,6 +4,7 @@ const place = {
   pars: require("./pars.png"),
   ts: require("./ts.png"),
   waffle: require("./waffle.png"),
+  wasp: require("./wasp.png"),
 };
 
 export default place;

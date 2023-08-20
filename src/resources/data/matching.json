@@ -1,14 +1,23 @@
 {
   "64e0f9773207e544b901bbe1": {
     "user": "64e0f1303207e544b901bbdc",
-    "introducing": "I like milk and waffles~"
+    "introducing": "I like milk and waffles~",
+    "tags": ["Sweet Lover", "Fruit Lover"],
+    "place": "64e107383207e544b901bbfe",
+    "food": "64e142933207e544b901d83a"
   },
   "64e0f9773207e544b901bbe2": {
     "user": "64e0f11a3207e544b901bbda",
-    "introducing": "I like korean foods. Let’s eat together!"
+    "introducing": "I like korean foods. Let’s eat together!",
+    "tags": ["Spicy Lover", "Korean Food Lover"],
+    "place": "64e107383207e544b901bbff",
+    "food": "64e142933207e544b901d836"
   },
   "64e0f9773207e544b901bbe3": {
     "user": "64e0f1483207e544b901bbdd",
-    "introducing": "mint chocolate & pineapple pizza"
+    "introducing": "mint chocolate & pineapple pizza",
+    "tags": ["Hate Spicy", "Japanese Food Lover"],
+    "place": "64e107383207e544b901bc00",
+    "food": "64e142933207e544b901d838"
   }
 }

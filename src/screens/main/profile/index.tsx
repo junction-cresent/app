@@ -17,7 +17,7 @@ const Profile = () => {
     <View style={styles.global.container}>
       <ScrollView>
         <View style={[styles.index.container, styles.profile.container]}>
-          <View style={styles.index.header}>
+          <View style={[styles.index.header, styles.profile.header]}>
             <View style={styles.index.headerContent}>
               <Text style={styles.index.headerTitleText}>Profile</Text>
             </View>

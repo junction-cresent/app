@@ -77,7 +77,12 @@ const Home = () => {
                 </Text>
               </TouchableOpacity>
               <TouchableOpacity
-                style={[styles.home.gridItem, styles.home.gridItemYellow]}>
+                style={[styles.home.gridItem, styles.home.gridItemYellow]}
+                onPress={() => {
+                  navigation.navigate("HomeStack", {
+                    screen: "Grouping",
+                  });
+                }}>
                 <Text style={styles.home.gridYellowTitle}>Grouping</Text>
                 <Text style={styles.home.gridYellowDescription}>
                   Group together{"\n"}by your favorite food

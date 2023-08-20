@@ -93,7 +93,13 @@ const Detail = () => {
           </View>
         </View>
       </ScrollView>
-      <TouchableOpacity style={styles.detail.button}>
+      <TouchableOpacity
+        style={styles.detail.button}
+        onPress={() => {
+          navigation.navigate("HomeStack", {
+            screen: "Challenge",
+          });
+        }}>
         <Text style={styles.detail.buttonText}>Accept Challenge</Text>
       </TouchableOpacity>
     </View>

@@ -14,11 +14,6 @@
         "type": "message",
         "data": "Hello Nazuna!"
       },
-      {
-        "me": true,
-        "type": "message",
-        "data": "Hi there! hi"
-      }
     ]
   },
   "64e102333207e544b901bbef": {
